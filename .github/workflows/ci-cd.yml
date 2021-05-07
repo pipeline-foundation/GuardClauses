@@ -25,3 +25,9 @@ jobs:
         shell: pwsh
         run: |
           dotnet build .\GuardClauses.sln --configuration Release
+
+      - name: Run Unit Tests
+        id: run_unit_tests
+        shell: pwsh
+        run: |
+          dotnet test .\GuardClauses.sln --verbosity normal
