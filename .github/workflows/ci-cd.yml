@@ -43,14 +43,6 @@ jobs:
           Write-Output "::set-output name=is_push::$(echo $isPush)"
           Write-Output "::set-output name=is_push_to_default_branch::$(echo $isPushToDefaultBranch)"
 
-      - name: Filter changes
-        id: filter_changes
-        uses: dorny/paths-filter@v2
-        with:
-          filters: |
-            guardclauses:
-              - 'src/GuardClauses/**'
-
       - name: Setup .NET Core
         id: setup_dotnet_core
         uses: actions/setup-dotnet@v1
@@ -62,6 +54,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Filter changes
+        id: filter_changes
+        uses: dorny/paths-filter@v2
+        with:
+          filters: |
+            guardclauses:
+              - 'src/GuardClauses/**'
 
       - if: steps.conditionals_handler.outputs.is_push_to_default_branch == 'true' && steps.filter_changes.outputs.guardclauses
         name: Bump GH tag
