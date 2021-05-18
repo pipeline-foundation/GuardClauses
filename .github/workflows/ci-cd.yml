@@ -95,7 +95,7 @@ jobs:
           path: src\GuardClauses\bin\Release\
 
   cd:
-    if: needs.ci.outputs.latest_version != '' && needs.ci.outputs.is_change_in_project_source == 'true'
+    if: needs.ci.outputs.latest_version != ''
     name: Continuous Deployment
     needs: ci
     runs-on: windows-latest
