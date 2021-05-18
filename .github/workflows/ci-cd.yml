@@ -7,7 +7,6 @@ jobs:
     name: Continuous Integration
     runs-on: windows-latest
     outputs:
-      is_change_in_project_source: ${{ steps.filter_changes.outputs.guardclauses }}
       latest_version: ${{ steps.tag_generator.outputs.new_version }}
     steps:
       - name: Data gatherer
