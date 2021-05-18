@@ -9,7 +9,6 @@ jobs:
     outputs:
       is_change_in_project_source: ${{ steps.filter_changes.outputs.guardclauses }}
       latest_version: ${{ steps.tag_generator.outputs.new_version }}
-      is_push_to_default_branch: ${{ steps.conditionals_handler.outputs.is_push_to_default_branch }}
     steps:
       - name: Data gatherer
         id: data_gatherer
